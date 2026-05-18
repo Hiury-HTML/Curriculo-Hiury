@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiury Rafael - O Jovem Aprendiz que você procura!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonte moderna e divertida -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Confetes para o botão -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background-color: #0f172a; /* Slate 900 */
+            color: #e2e8f0; /* Slate 200 */
+            background-image: 
+                radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+                radial-gradient(at 50% 0%, hsla(225,39%,30%,1) 0, transparent 50%), 
+                radial-gradient(at 100% 0%, hsla(339,49%,30%,1) 0, transparent 50%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        /* Estilo Container tipo App de Celular */
+        .app-container {
+            max-width: 480px;
+            margin: 0 auto;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            min-height: 100vh;
+            box-shadow: 0 0 40px rgba(0,0,0,0.5);
+            border-left: 1px solid rgba(255,255,255,0.05);
+            border-right: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .neon-text-blue { text-shadow: 0 0 10px #38bdf8, 0 0 20px #38bdf8; }
+        .neon-text-pink { text-shadow: 0 0 10px #f472b6, 0 0 20px #f472b6; }
+        
+        .skill-bar-fill {
+            transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .meme-badge {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Glitch effect pro nome */
+        .glitch {
+            position: relative;
+        }
+        .glitch::before, .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.8;
+        }
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 #ff00c1;
+            clip: rect(44px, 450px, 56px, 0);
+            animation: glitch-anim 5s infinite linear alternate-reverse;
+        }
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 #00fff9, 2px 2px #ff00c1;
+            animation: glitch-anim2 5s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim {
+            0% { clip: rect(10px, 9999px, 86px, 0); }
+            20% { clip: rect(61px, 9999px, 20px, 0); }
+            40% { clip: rect(32px, 9999px, 12px, 0); }
+            60% { clip: rect(89px, 9999px, 55px, 0); }
+            80% { clip: rect(5px, 9999px, 93px, 0); }
+            100% { clip: rect(43px, 9999px, 64px, 0); }
+        }
+        
+        .floating-emoji {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.2;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-pink-500 selection:text-white pb-10 relative">
+
+    <!-- Decoração de fundo -->
+    <div class="floating-emoji" style="top: 10%; left: 10%; transform: rotate(15deg);">🚀</div>
+    <div class="floating-emoji" style="top: 40%; right: 15%; transform: rotate(-20deg);">💼</div>
+    <div class="floating-emoji" style="top: 70%; left: 20%; transform: rotate(10deg);">🎮</div>
+
+    <div class="app-container p-6 pt-10 sm:rounded-3xl sm:my-8 sm:min-h-[calc(100vh-4rem)] relative overflow-hidden">
+        
+        <!-- Header / Perfil -->
+        <header class="text-center relative z-10 mb-8 fade-in">
+            <div class="relative inline-block mb-4">
+                <!-- Avatar placeholder criativo -->
+                <div class="w-32 h-32 rounded-full border-4 border-cyan-400 p-1 mx-auto overflow-hidden bg-gradient-to-tr from-cyan-400 to-pink-500 shadow-[0_0_30px_rgba(56,189,248,0.4)] flex items-center justify-center text-4xl">
+                    👦🏽🎓
+                </div>
+                <!-- Badge de Status -->
+                <div class="absolute bottom-0 right-0 bg-green-500 w-6 h-6 rounded-full border-4 border-slate-900 meme-badge flex items-center justify-center" title="Online e roteando pro mercado!">
+                    <span class="w-2 h-2 bg-white rounded-full"></span>
+                </div>
+            </div>
+            
+            <h1 class="text-3xl font-extrabold text-white tracking-tight glitch" data-text="HIURY RAFAEL">HIURY RAFAEL</h1>
+            <h2 class="text-xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-pink-500 font-bold mt-1">
+                <i class="fa-solid fa-bolt mr-1"></i> Jovem Aprendiz
+            </h2>
+            <p class="text-slate-400 text-sm mt-2 flex justify-center items-center gap-2">
+                <i class="fa-solid fa-location-dot"></i> Cariacica, ES | 16 anos
+            </p>
+            
+            <div class="mt-4 inline-block bg-slate-800/80 rounded-full px-4 py-1 text-xs border border-slate-700 text-cyan-300">
+                <i class="fa-solid fa-gamepad mr-1"></i> Status: Buscando a 1ª XP Profissional!
+            </div>
+        </header>
+
+        <!-- Seção: Objetivo (O Pitch) -->
+        <section class="bg-slate-800/50 rounded-2xl p-5 mb-6 border border-slate-700 hover:border-cyan-500 transition-colors backdrop-blur-sm">
+            <h3 class="text-pink-400 font-bold text-sm uppercase tracking-wider mb-3 flex items-center">
+                <i class="fa-solid fa-bullseye mr-2 text-lg"></i> Quest Principal (Objetivo)
+            </h3>
+            <p class="text-sm leading-relaxed text-slate-300 italic"
+                "Pronto para dar o start na minha carreira! 🎮 Busco a minha primeira oportunidade como <strong class="text-white">Jovem Aprendiz</strong>. O meu foco é desenvolver novas habilidades profissionais, entregar resultados com muita dedicação🚀
+            </p>
+        </section>
+
+        <!-- Seção: Formação (Checkpoints) -->
+        <section class="mb-6">
+            <h3 class="text-cyan-400 font-bold text-sm uppercase tracking-wider mb-4 pl-2 border-l-4 border-cyan-400">
+                <i class="fa-solid fa-school mr-2"></i> Checkpoint (Formação)
+            </h3>
+            <div class="bg-slate-800/50 rounded-2xl p-4 border border-slate-700 flex items-start gap-4">
+                <div class="bg-cyan-900/50 p-3 rounded-xl text-cyan-400 text-xl">
+                    <i class="fa-solid fa-book-open"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-white">Cursando o 2º Ano do Ensino Médio</h4>
+                    <p class="text-xs text-slate-400 mt-1">Escola Maria de Lourdes Poyares Labuto</p>
+                    <div class="mt-2 text-[10px] font-bold bg-green-500/20 text-green-400 px-2 py-1 rounded inline-block">
+                        Em progresso... ⏳
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seção: Hard Skills (Árvore de Habilidades) -->
+        <section class="mb-6">
+            <h3 class="text-pink-400 font-bold text-sm uppercase tracking-wider mb-4 pl-2 border-l-4 border-pink-400">
+                <i class="fa-solid fa-laptop-code mr-2"></i> Skill Tree (Hard Skills)
+            </h3>
+            <div class="space-y-4 bg-slate-800/30 p-4 rounded-2xl border border-slate-700/50">
+                
+                <!-- Skill 1 -->
+                <div>
+                    <div class="flex justify-between text-sm mb-1">
+                        <span class="font-semibold text-slate-200">Informática Básica</span>
+                        <span class="text-xs text-slate-400">Sobrevivente Digital 💻</span>
+                    </div>
+                    <div class="w-full bg-slate-700 rounded-full h-2.5">
+                        <div class="bg-gradient-to-r from-cyan-500 to-blue-500 h-2.5 rounded-full skill-bar-fill w-0" data-width="85%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 2 -->
+                <div>
+                    <div class="flex justify-between text-sm mb-1">
+                        <span class="font-semibold text-slate-200">Excel</span>
+                        <span class="text-xs text-slate-400">A aprender as magias 📊</span>
+                    </div>
+                    <div class="w-full bg-slate-700 rounded-full h-2.5">
+                        <div class="bg-gradient-to-r from-green-400 to-emerald-600 h-2.5 rounded-full skill-bar-fill w-0" data-width="60%"></div>
+                    </div>
+                </div>
+
+                <!-- Skill 3 -->
+                <div>
+                    <div class="flex justify-between text-sm mb-1">
+                        <span class="font-semibold text-slate-200">Organização de Docs</span>
+                        <span class="text-xs text-slate-400">Tudo no seu devido lugar 📂</span>
+                    </div>
+                    <div class="w-full bg-slate-700 rounded-full h-2.5">
+                        <div class="bg-gradient-to-r from-pink-500 to-purple-500 h-2.5 rounded-full skill-bar-fill w-0" data-width="90%"></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Seção: Soft Skills (Buffs) -->
+        <section class="mb-8">
+            <h3 class="text-cyan-400 font-bold text-sm uppercase tracking-wider mb-4 pl-2 border-l-4 border-cyan-400">
+                <i class="fa-solid fa-star mr-2"></i> Buffs Ativos (Soft Skills)
+            </h3>
+            <div class="flex flex-wrap gap-2">
+                <span class="bg-slate-800 border border-slate-600 px-3 py-2 rounded-xl text-xs font-semibold shadow-sm hover:scale-105 hover:border-cyan-400 transition-all cursor-default">
+                    🤝 Trabalho em Equipe (Aquele duo de respeito)
+                </span>
+                <span class="bg-slate-800 border border-slate-600 px-3 py-2 rounded-xl text-xs font-semibold shadow-sm hover:scale-105 hover:border-pink-400 transition-all cursor-default">
+                    🗣️ Boa Comunicação (Bom de papo, mas focado)
+                </span>
+                <span class="bg-slate-800 border border-slate-600 px-3 py-2 rounded-xl text-xs font-semibold shadow-sm hover:scale-105 hover:border-green-400 transition-all cursor-default">
+                    ⏰ Pontualidade (O despertador não me vence)
+                </span>
+                <span class="bg-slate-800 border border-slate-600 px-3 py-2 rounded-xl text-xs font-semibold shadow-sm hover:scale-105 hover:border-yellow-400 transition-all cursor-default">
+                    🧠 Vontade de Aprender (Mente de esponja)
+                </span>
+            </div>
+        </section>
+
+        <!-- Botões de Contato (Call to Action) -->
+        <section class="text-center mt-10">
+            <p class="text-sm text-slate-400 mb-4">Gostou do perfil? Bora dar match nesta vaga! 👇</p>
+            
+            <div class="flex flex-col gap-3">
+                <button onclick="hireMe()" class="w-full bg-gradient-to-r from-pink-500 to-cyan-500 text-white font-bold py-4 px-6 rounded-2xl shadow-[0_0_15px_rgba(236,72,153,0.5)] hover:shadow-[0_0_25px_rgba(56,189,248,0.7)] transform transition hover:-translate-y-1 active:translate-y-0 relative overflow-hidden group">
+                    <div class="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform"></div>
+                    <span class="relative z-10"><i class="fa-brands fa-whatsapp text-xl mr-2"></i> Chamar no WhatsApp (1)</span>
+                </button>
+                <div class="text-xs text-slate-500">Ou pelo número 2: (27) 99808-9247</div>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-slate-800">
+                <p class="text-xs text-slate-500 flex items-center justify-center gap-1">
+                    📍 Rua Maria Matilde dos Santos, N° 303 <br>
+                    Estado Civil: Solteiro (e focado na carreira)
+                </p>
+            </div>
+        </section>
+        
+    </div>
+
+    <script>
+        // Animação das barras de progresso ao carregar a página
+        document.addEventListener("DOMContentLoaded", () => {
+            setTimeout(() => {
+                const barras = document.querySelectorAll('.skill-bar-fill');
+                barras.forEach(barra => {
+                    barra.style.width = barra.getAttribute('data-width');
+                });
+            }, 300);
+        });
+
+        // Função do Botão "Contratar" com Confetes e Redirecionamento
+        function hireMe() {
+            // Efeito de confete
+            confetti({
+                particleCount: 150,
+                spread: 70,
+                origin: { y: 0.8 },
+                colors: ['#38bdf8', '#f472b6', '#4ade80', '#fbbf24']
+            });
+
+            // Alerta amigável + redirecionamento para WhatsApp (número principal do currículo)
+            setTimeout(() => {
+                alert("O RH gostou! A redirecionar para o WhatsApp do Hiury... 🚀");
+                // Número: (27) 99927-1390 formatado para link do WhatsApp
+                window.open('https://wa.me/5527999271390?text=Olá%20Hiury!%20Vimos%20o%20seu%20currículo%20criativo%20e%20gostaríamos%20de%20conversar!', '_blank');
+            }, 1000);
+        }
+    </script>
+</body>
+</html>
